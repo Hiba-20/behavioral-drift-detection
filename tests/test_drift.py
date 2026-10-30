@@ -45,7 +45,8 @@ def test_half_controls_and_balanced_cells(data):
     assert (truth["drift_type"] == "none").sum() == N_PERSONS // 2
     cells = truth[truth["drift_type"] != "none"].groupby(["drift_type", "level"]).size()
     assert len(cells) == len(DRIFT_TYPES) * len(AMPLITUDES_SIGMA)
-    assert cells.between(33, 34).all()
+    per_cell = (N_PERSONS - N_PERSONS // 2) // len(cells)  # division entière : 55 pour 500 / 9
+    assert cells.between(per_cell, per_cell + 1).all()
 
 
 def test_d0_in_range_for_drifted_and_missing_for_controls(data):

@@ -15,7 +15,7 @@ SEED = 42
 EXTRA_SEEDS = [1, 2, 3, 4]
 
 # Taille du jeu de données (valeurs par défaut du plan).
-N_PERSONS = 600
+N_PERSONS = 1000
 N_DAYS = 150
 BASELINE_DAYS = 45  # jours 0 à 44 : jamais de dérive, référence personnelle
 
