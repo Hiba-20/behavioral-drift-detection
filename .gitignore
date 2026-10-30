@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+.DS_Store
+
+# données générées : régénérables avec la graine (voir src/config.py)
+data/*
+!data/.gitkeep
