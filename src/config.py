@@ -37,6 +37,14 @@ SPLIT_FRACTIONS = {"train": 0.6, "val": 0.2}  # le test reçoit le reste (20 %)
 LABEL_MIN_RAMP = 0.0  # 0 : étiquette « dérive » dès d0 ; 0.5 : seulement quand la dérive a atteint 50 %
 BASELINE_STD_FLOOR = 0.1  # évite de diviser par ~0 si une personne est presque constante
 
+# Évaluation (étape 4).
+MONITOR_START = BASELINE_DAYS  # les alarmes ne comptent qu'à partir de ce jour
+TARGET_FALSE_ALARM_RATE = 0.05  # part maximale de témoins ayant au moins une alarme
+
+# Détecteurs statistiques (étape 5).
+ROLLING_WINDOW = 7  # jours moyennés par le z-score glissant : contient toujours 2 jours de week-end
+CUSUM_K = 0.5  # tolérance du CUSUM, en écarts-types : les écarts plus petits ne remplissent rien
+
 
 def make_rng(seed=SEED):
     """Retourne un générateur NumPy reproductible."""
