@@ -41,6 +41,9 @@ BASELINE_STD_FLOOR = 0.1  # évite de diviser par ~0 si une personne est presque
 MONITOR_START = BASELINE_DAYS  # les alarmes ne comptent qu'à partir de ce jour
 TARGET_FALSE_ALARM_RATE = 0.05  # part maximale de témoins ayant au moins une alarme
 
+# Réseau de neurones (étape 7).
+CNN_WINDOW = 14  # jours vus par le réseau : 2 semaines, donc 2 week-ends complets
+
 # Détecteurs statistiques (étape 5).
 ROLLING_WINDOW = 7  # jours moyennés par le z-score glissant : contient toujours 2 jours de week-end
 CUSUM_K = 0.5  # tolérance du CUSUM, en écarts-types : les écarts plus petits ne remplissent rien

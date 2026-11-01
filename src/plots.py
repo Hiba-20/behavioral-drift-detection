@@ -37,6 +37,22 @@ def plot_person_series(journal, person_id, d0=None, path=None):
     return fig
 
 
+def plot_training_curves(histories, path=None):
+    """Perte d'entraînement et de validation par époque, une ligne par historique."""
+    fig, ax = plt.subplots(figsize=(7, 4))
+    for i, (name, history) in enumerate(histories.items()):
+        epochs = [row["epoch"] for row in history]
+        ax.plot(epochs, [row["train_loss"] for row in history], color=f"C{i}", linestyle="--", label=f"{name} : train")
+        ax.plot(epochs, [row["val_loss"] for row in history], color=f"C{i}", label=f"{name} : validation")
+    ax.set_xlabel("Époque")
+    ax.set_ylabel("Perte (plus bas = mieux)")
+    ax.legend()
+    fig.tight_layout()
+    if path is not None:
+        fig.savefig(path, dpi=120)
+    return fig
+
+
 def plot_drift_profiles(journal, truth, path=None):
     """Écart moyen à la baseline personnelle, en jours relatifs à d0, par type et niveau."""
     df = journal.merge(truth, on="person_id")
